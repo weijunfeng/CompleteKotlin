@@ -38,7 +38,7 @@ and add the following at the top of the file:
 
 ```kts
 plugins {
-    id("com.louiscad.complete-kotlin") version "1.1.0"
+    id("io.github.wjf510.complete-kotlin") version "1.1.0"
 }
 ```
 
