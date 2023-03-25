@@ -71,6 +71,14 @@ gradlePlugin {
     }
 }
 
+afterEvaluate {
+    publishing.publications.withType<MavenPublication> {
+        if (this.name.endsWith("PluginMarkerMaven")) {
+            artifactId = "plugin"
+        }
+    }
+}
+
 pluginBundle {
     website = ""
     vcsUrl = ""
