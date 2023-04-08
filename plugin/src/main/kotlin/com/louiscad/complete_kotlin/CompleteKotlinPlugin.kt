@@ -55,7 +55,9 @@ class CompleteKotlinPlugin : Plugin<Any> {
     }
 
     private fun setupIfNeeded(project: Project) {
-        KotlinNativeCompilerInfo.buildUrl = project.rootProject.providers.gradleProperty("kotlin.native.distribution.baseDownloadUrl").orNull?.toString()?:""
+        if (project.rootProject.hasProperty("kotlin.native.distribution.baseDownloadUrl")) {
+            KotlinNativeCompilerInfo.buildUrl = project.rootProject.property("kotlin.native.distribution.baseDownloadUrl")?.toString() ?: ""
+        }
         println("completeKotlin KotlinNativeCompilerInfo.buildUrl = ${KotlinNativeCompilerInfo.buildUrl}")
         println("completeKotlin KotlinNativeCompilerInfo.buildRawUrl = ${KotlinNativeCompilerInfo.buildRawUrl}")
         project.plugins.withId("org.jetbrains.kotlin.multiplatform") {
